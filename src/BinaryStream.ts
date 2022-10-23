@@ -1,10 +1,10 @@
 import assert from 'assert';
 
 export default class BinaryStream {
-    private binary: Array<number> = [];
-    private buffer: Buffer | null = null;
-    private readIndex: number;
-    private writeIndex = 0;
+    protected binary: Array<number> = [];
+	protected buffer: Buffer | null = null;
+	protected readIndex: number;
+	protected writeIndex = 0;
 
     /**
      * Creates a new BinaryStream instance.
