@@ -13,6 +13,6 @@
         "declaration": true,
         "allowSyntheticDefaultImports": true
     },
-    "include": ["./src/BinaryStream.ts", "./src/types"],
+    "include": ["./src/BinaryStream.ts", "./src/BinaryStream.test.ts", "./src/types"],
     "typeRoots": ["node_modules/@types", "./src/types"]
 }
