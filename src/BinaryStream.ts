@@ -432,17 +432,7 @@ export default class BinaryStream {
      * @param {bigint} v
      */
     public writeLong(v: bigint): void {
-        const lo = Number(v & BigInt(0xffffffff));
-        this.binary[this.writeIndex + 7] = lo;
-        this.binary[this.writeIndex + 6] = lo >> 8;
-        this.binary[this.writeIndex + 5] = lo >> 16;
-        this.binary[this.writeIndex + 4] = lo >> 24;
-        const hi = Number((v >> BigInt(32)) & BigInt(0xffffffff));
-        this.binary[this.writeIndex + 3] = hi;
-        this.binary[this.writeIndex + 2] = hi >> 8;
-        this.binary[this.writeIndex + 1] = hi >> 16;
-        this.binary[this.writeIndex] = hi >> 24;
-        this.writeIndex += 8;
+        this.writeUnsignedLong(v)
     }
 
     /**
@@ -459,16 +449,7 @@ export default class BinaryStream {
      * @param {bigint} v
      */
     public writeLongLE(v: bigint): void {
-        const lo = Number(v & BigInt(0xffffffff));
-        this.binary[this.writeIndex++] = lo;
-        this.binary[this.writeIndex++] = lo >> 8;
-        this.binary[this.writeIndex++] = lo >> 16;
-        this.binary[this.writeIndex++] = lo >> 24;
-        const hi = Number((v >> BigInt(32)) & BigInt(0xffffffff));
-        this.binary[this.writeIndex++] = hi;
-        this.binary[this.writeIndex++] = hi >> 8;
-        this.binary[this.writeIndex++] = hi >> 16;
-        this.binary[this.writeIndex++] = hi >> 24;
+        this.writeUnsignedLongLE(v)
     }
 
     /**
