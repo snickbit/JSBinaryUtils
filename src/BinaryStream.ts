@@ -538,7 +538,6 @@ export default class BinaryStream {
      * @param {number} v
      */
     public writeVarInt(v: number): void {
-	    v = (v << 32) >> 32;
 	    return this.writeUnsignedVarInt((v << 1) ^ (v >> 31));
     }
 
