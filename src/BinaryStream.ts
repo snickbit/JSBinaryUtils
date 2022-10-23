@@ -530,8 +530,7 @@ export default class BinaryStream {
      */
     public readVarInt(): number {
         const raw = this.readUnsignedVarInt();
-        const temp = (((raw << 63) >> 63) ^ raw) >> 1;
-        return temp ^ (raw & (1 << 63));
+        return (raw >> 1) ^ -(raw & 1)
     }
 
     /**
@@ -539,8 +538,8 @@ export default class BinaryStream {
      * @param {number} v
      */
     public writeVarInt(v: number): void {
-        v = (v << 32) >> 32;
-        return this.writeUnsignedVarInt((v << 1) ^ (v >> 31));
+	    v = (v << 32) >> 32;
+	    return this.writeUnsignedVarInt((v << 1) ^ (v >> 31));
     }
 
     /**
